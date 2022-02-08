@@ -8,4 +8,4 @@ router.get("/", (req, res) => {
   res.status(200).json({ message: "Get Goals" });
 });
 
-nmodule.exports = router;
+module.exports = router;
