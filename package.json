@@ -17,5 +17,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SilverX21/mern-tutorial.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SilverX21/mern-tutorial/issues"
+  },
+  "homepage": "https://github.com/SilverX21/mern-tutorial#readme"
 }
