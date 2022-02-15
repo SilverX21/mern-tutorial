@@ -13,6 +13,10 @@ const getGoals = (req, res) => {
 //@route    POST /api/goals
 //@access   private
 const setGoal = (req, res) => {
+  if (!req.body.text) {
+    //res.status(400).json({ message: "Please add a text field!" }); //podemos fazer desta forma para mandar o status 400 com uma mensagem num json
+    throw new Error("Plase add a text field!");
+  }
   res.status(200).json({ message: "Set goal" });
 };
 

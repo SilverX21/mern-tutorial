@@ -11,7 +11,6 @@ const {
 //aqui temos um exemplo que um get e um post
 //fazemos o chaining para que ele utilize a route que definimos para as duas situações, ou seja, vai aplicar o path para as duas
 router.route("/").get(getGoals).post(setGoal);
-
 router.route("/:id").delete(deleteGoal).put(updateGoal);
 
 module.exports = router;
