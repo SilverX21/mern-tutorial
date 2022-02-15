@@ -1,6 +1,15 @@
 Aqui estamos a seguir o tutorial do seguinte vídeo:
 https://www.youtube.com/watch?v=-0exw-9YJBo
 
+0. Criar o ficheiro jsonconfig.json para colocar lá a versão do javascript:
+   {
+   "compilerOptions": {
+   "module": "commonjs",
+   "target": "es6"
+   },
+   "exclude": ["node_modules"]
+   }
+
 1. Criar o server.js
 
 2. Correr o comando "npm init"

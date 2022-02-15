@@ -8,16 +8,10 @@ const {
   deleteGoal,
 } = require("../controllers/goalController");
 
-//aqui temos um exemplo que um get
-router.get("/", getGoals);
+//aqui temos um exemplo que um get e um post
+//fazemos o chaining para que ele utilize a route que definimos para as duas situações, ou seja, vai aplicar o path para as duas
+router.route("/").get(getGoals).post(setGoal);
 
-//aqui temos um exemplo de um post
-router.post("/", setGoal);
-
-//aqui é um exemplo de um put (update)
-router.put("/:id", updateGoal);
-
-//aqui temos um exemplo de um delete
-router.delete("/:id", deleteGoal);
+router.route("/:id").delete(deleteGoal).put(updateGoal);
 
 module.exports = router;
