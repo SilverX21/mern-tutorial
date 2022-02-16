@@ -36,3 +36,20 @@ https://www.youtube.com/watch?v=-0exw-9YJBo
 11. criar a pasta controllers, a qual vai receber os pedidos para determinados tipos de chamadas
 
 12. instalar o seguinte pacote: "npm i express-async-handler" -> error handling nas funções assincronas
+
+13. Sacamos a aplicações Compass, do MongoDB, que é uma ferramenta visual e que vai ajudar no desenvolvimento:
+    https://www.mongodb.com/products/compass
+
+14. fazemos o setup da base de dados (MongoDB)
+
+- Criar base de dados (MongoDB)
+- fazer connect com o projeto
+- adicionamos no ficheiro ".env" a connection
+- alteramos lá o nome que aparece (deve ter algo como myFirstDatabase)
+- colocamos a password
+
+15. criamos a pasta config, dentro da pasta backend
+
+16. Criamos o ficheiro db.js para usar o mongoose e o mongodb
+
+17. Criamos a pasta model para colocar lá os nossos models para a app

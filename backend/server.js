@@ -1,8 +1,13 @@
 const express = require("express");
+const colors = require("colors"); //aqui utilizamos o colors
 const dotenv = require("dotenv").config();
 const { errorHandler } = require("./midleware/errorMiddleware");
+const connectDB = require("./config/db");
 //process.env.PORT utiliza o valor que está no ficheiro .env, na variável PORT
 const port = process.env.PORT || 5000;
+
+//aqui inicializamos a connection à BD
+connectDB();
 
 //na linha em baixo estamos a utilizar o express
 const app = express();

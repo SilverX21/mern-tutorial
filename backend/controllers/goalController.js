@@ -3,6 +3,8 @@
 //aqui utilizamos o async handler do express
 const asyncHandler = require("express-async-handler");
 
+const Goal = require("../models/goalModel"); //aqui usamos o model dos goals
+
 //@desc     Get goals
 //@route    GET /api/goals
 //@access   private
@@ -10,7 +12,10 @@ const asyncHandler = require("express-async-handler");
 //aqui enviamos uma resposta com o status 200 OK, do tipo .json
 //aqui usamos o asyncHandler para utilizar as prorpiedades do error handling do express
 const getGoals = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "Get goals" });
+  //aqui vamos procurar os goals
+  const goals = await Goal.find();
+
+  res.status(200).json(goals);
 });
 
 //@desc     Set goals
@@ -21,7 +26,9 @@ const setGoal = asyncHandler(async (req, res) => {
     //res.status(400).json({ message: "Please add a text field!" }); //podemos fazer desta forma para mandar o status 400 com uma mensagem num json
     throw new Error("Plase add a text field!");
   }
-  res.status(200).json({ message: "Set goal" });
+
+  const goal = await Goal.create({ text: req.body.text });
+  res.status(200).json(goal);
 });
 
 //@desc     Update goals
@@ -30,7 +37,21 @@ const setGoal = asyncHandler(async (req, res) => {
 //temos que meter /:id porque é preciso saber qual o registo que queremos alterar
 //depois usamos o req.params para ir buscar o id (req.params vai buscar todos os parametros da request)
 const updateGoal = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Update goal ${req.params.id}` });
+  const goal = await Goal.findById(req.params.id);
+
+  if (!goal) {
+    res.status(400);
+    throw new Error("Goal not found");
+  }
+
+  //o primeiro parâmetro é o id do goal a atualizar
+  //o segundo é o body da request para colocar os campos todos
+  //o terceiro é um objecto chamado options, que o vai criar caso não exista
+  const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+
+  res.status(200).json(updatedGoal);
 });
 
 //@desc     Delete goals
@@ -38,7 +59,17 @@ const updateGoal = asyncHandler(async (req, res) => {
 //@access   private
 //precisa do id para apagar o objeto pretendido
 const deleteGoal = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Deleted goal ${req.params.id}` });
+  const goal = await Goal.findById(req.params.id);
+
+  if (!goal) {
+    res.status(400);
+    throw new Error("The goal doesn't exists!");
+  }
+
+  //aqui apagamos o goal que encontrarmos
+  await goal.remove();
+
+  res.status(200).json({ id: req.params.id });
 });
 
 //aqui estamos a exportar este módulo, onde iremos utilizar as funções que estão no objeto em baixo
