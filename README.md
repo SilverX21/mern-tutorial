@@ -34,3 +34,5 @@ https://www.youtube.com/watch?v=-0exw-9YJBo
 10. Criar a pasta routes, que vai lidar com o routing dos pedidos de
 
 11. criar a pasta controllers, a qual vai receber os pedidos para determinados tipos de chamadas
+
+12. instalar o seguinte pacote: "npm i express-async-handler" -> error handling nas funções assincronas
