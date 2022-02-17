@@ -4,6 +4,7 @@
 const asyncHandler = require("express-async-handler");
 
 const Goal = require("../models/goalModel"); //aqui usamos o model dos goals
+const User = require("../models/userModel"); //aqui usamos o model dos users
 
 //@desc     Get goals
 //@route    GET /api/goals
@@ -13,7 +14,7 @@ const Goal = require("../models/goalModel"); //aqui usamos o model dos goals
 //aqui usamos o asyncHandler para utilizar as prorpiedades do error handling do express
 const getGoals = asyncHandler(async (req, res) => {
   //aqui vamos procurar os goals
-  const goals = await Goal.find();
+  const goals = await Goal.find({ user: req.user.id });
 
   res.status(200).json(goals);
 });
@@ -27,7 +28,7 @@ const setGoal = asyncHandler(async (req, res) => {
     throw new Error("Plase add a text field!");
   }
 
-  const goal = await Goal.create({ text: req.body.text });
+  const goal = await Goal.create({ text: req.body.text, user: req.user.id });
   res.status(200).json(goal);
 });
 
@@ -42,6 +43,19 @@ const updateGoal = asyncHandler(async (req, res) => {
   if (!goal) {
     res.status(400);
     throw new Error("Goal not found");
+  }
+
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  //verificar se o user que tem a sessão é o utilizador do goal
+  if (goal.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("User not authorized");
   }
 
   //o primeiro parâmetro é o id do goal a atualizar
@@ -64,6 +78,19 @@ const deleteGoal = asyncHandler(async (req, res) => {
   if (!goal) {
     res.status(400);
     throw new Error("The goal doesn't exists!");
+  }
+
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  //verificar se o user que tem a sessão é o utilizador do goal
+  if (goal.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("User not authorized");
   }
 
   //aqui apagamos o goal que encontrarmos

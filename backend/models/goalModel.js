@@ -6,6 +6,11 @@ const mongoose = require("mongoose");
 //with a Date, and which does all the work for you. Any time you update the document, it updates the updatedAt property
 const goalSchema = mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId, //aqui estamos a dizer que esta propriedade vai ser um determinado objecto
+      require: true,
+      ref: "User", //aqui estamos a dizer qual o objecto que vamos associar esta propriedade
+    },
     text: {
       type: String,
       required: [true, "Please add a text value!"], //aqui dizemos que é required, caso não tenha nada manda a mensagem que tem a seguir

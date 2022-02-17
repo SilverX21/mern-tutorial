@@ -1,5 +1,7 @@
-Aqui estamos a seguir o tutorial do seguinte vídeo:
+Aqui estamos a seguir a parte 1 do tutorial do seguinte vídeo:
 https://www.youtube.com/watch?v=-0exw-9YJBo
+
+Nesta parte vamos tratar do backend da app
 
 0. Criar o ficheiro jsonconfig.json para colocar lá a versão do javascript:
    {
@@ -53,3 +55,24 @@ https://www.youtube.com/watch?v=-0exw-9YJBo
 16. Criamos o ficheiro db.js para usar o mongoose e o mongodb
 
 17. Criamos a pasta model para colocar lá os nossos models para a app
+
+---
+
+Aqui vamos seguir a parte 2 do tutorial de MERN:
+https://www.youtube.com/watch?v=enopDSs3DRw&t=1s&ab_channel=TraversyMedia
+
+Nesta parte vamos tratar da autenticação da app
+
+1. Criamos o model "userModel", para a autenticação
+
+2. Depois criamos o userRoutes e o userController para podermos lidar com as chamadas, adicionando o userRoutes ao server.js
+
+3. Para não guardarmos as passwords como texto simples, o que é inseguro, temos de as encriptar, para isso instalamos o seguite package: "npm i bcryptjs"
+
+4. Para os tokens da autenticação e da sessão, temos de instalar o JWT tokens: "npm i jsonwebtoken"
+
+5. Depois só temos de adicionar nos métodos CRUD a verificação da autenticação e fica feito
+_______________________________________________________________________________________________________________
+
+Aqui vamos seguir a parte 3 do tutorial de MERN:
+https://www.youtube.com/watch?v=mvfsC66xqj0&t=5s&ab_channel=TraversyMedia
