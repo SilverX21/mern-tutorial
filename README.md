@@ -76,3 +76,9 @@ ________________________________________________________________________________
 
 Aqui vamos seguir a parte 3 do tutorial de MERN:
 https://www.youtube.com/watch?v=mvfsC66xqj0&t=5s&ab_channel=TraversyMedia
+
+
+_______________________________________________________________________________________________________________
+
+Aqui vamos seguir a parte 4 do tutorial de MERN:
+https://www.youtube.com/watch?v=UXjMo25Nnvc&ab_channel=TraversyMedia
